@@ -9,6 +9,7 @@
   <Project Path="Unity.PerformanceTesting.Editor.csproj" />
   <Project Path="Oculus.VR.csproj" />
   <Project Path="Unity.XR.OpenXR.csproj" />
+  <Project Path="Oculus.Interaction.csproj" />
   <Project Path="Unity.XR.ARFoundation.VisualScripting.Editor.csproj" />
   <Project Path="Unity.Burst.csproj" />
   <Project Path="Oculus.VR.Editor.csproj" />
@@ -23,8 +24,11 @@
   <Project Path="Unity.XR.CoreUtils.csproj" />
   <Project Path="Unity.XR.Simulation.Editor.csproj" />
   <Project Path="Unity.Searcher.Editor.csproj" />
+  <Project Path="Oculus.Interaction.Samples.csproj" />
   <Project Path="Unity.XR.Hands.csproj" />
   <Project Path="Unity.XR.MetaOpenXR.csproj" />
+  <Project Path="Oculus.Interaction.Editor.csproj" />
+  <Project Path="Oculus.Interaction.OVR.csproj" />
   <Project Path="Unity.TestTools.CodeCoverage.Editor.csproj" />
   <Project Path="Unity.Burst.CodeGen.csproj" />
   <Project Path="Meta.XR.BuildingBlocks.AIBlocks.csproj" />
@@ -34,6 +38,7 @@
   <Project Path="Unity.TestTools.CodeCoverage.Editor.OpenCover.Model.csproj" />
   <Project Path="Unity.XR.CompositionLayers.UIInteraction.csproj" />
   <Project Path="Unity.XR.CompositionLayers.csproj" />
+  <Project Path="Oculus.Interaction.OVR.Editor.csproj" />
   <Project Path="Unity.XR.CompositionLayers.Editor.csproj" />
   <Project Path="Unity.Burst.Editor.csproj" />
   <Project Path="Meta.XR.Editor.Tags.csproj" />
@@ -49,6 +54,7 @@
   <Project Path="Meta.XR.Editor.ToolingSupport.csproj" />
   <Project Path="Unity.XR.ARSubsystems.Editor.csproj" />
   <Project Path="Unity.Performance.Profile-Analyzer.Editor.csproj" />
+  <Project Path="Oculus.Interaction.OVR.Samples.csproj" />
   <Project Path="Unity.XR.Interaction.Toolkit.Samples.StarterAssets.csproj" />
   <Project Path="Meta.XR.Editor.PlayCompanion.csproj" />
   <Project Path="Meta.XR.Editor.Reflection.csproj" />
@@ -61,6 +67,7 @@
   <Project Path="Unity.InternalAPIEditorBridge.007.csproj" />
   <Project Path="Unity.XR.OpenXR.Editor.csproj" />
   <Project Path="Unity.XR.AndroidOpenXR.Editor.csproj" />
+  <Project Path="Oculus.Interaction.UnityXR.csproj" />
   <Project Path="Unity.XR.Interaction.Toolkit.Analytics.Editor.csproj" />
   <Project Path="Unity.XR.Management.Editor.csproj" />
   <Project Path="Meta.XR.Editor.Notifications.csproj" />
@@ -92,6 +99,7 @@
   <Project Path="Oculus.Platform.Editor.csproj" />
   <Project Path="Meta.XR.EnvironmentDepth.Editor.csproj" />
   <Project Path="Unity.XR.Interaction.Toolkit.Samples.Hands.Editor.csproj" />
+  <Project Path="Oculus.Interaction.Samples.Editor.UISet.csproj" />
   <Project Path="Unity.XR.ARFoundation.InternalUtils.csproj" />
   <Project Path="Unity.XR.ARFoundation.Editor.csproj" />
   <Project Path="Unity.EditorCoroutines.Editor.csproj" />
@@ -101,11 +109,13 @@
   <Project Path="Unity.XR.OpenXR.Features.MetaQuestSupport.csproj" />
   <Project Path="Meta.XR.ImmersiveDebugger.Interface.csproj" />
   <Project Path="Meta.XR.Editor.UPST.Notifications.csproj" />
+  <Project Path="Oculus.Interaction.Samples.Editor.csproj" />
   <Project Path="Meta.XR.Editor.Callbacks.csproj" />
   <Project Path="Unity.XR.Interaction.Toolkit.Samples.ARStarterAssets.Editor.csproj" />
   <Project Path="Unity.XR.OpenXR.Features.RuntimeDebugger.csproj" />
   <Project Path="UnityEngine.SpatialTracking.csproj" />
   <Project Path="Unity.XR.OpenXR.Features.OculusQuestSupport.Editor.csproj" />
+  <Project Path="Oculus.Interaction.Editor.UnityXR.csproj" />
   <Project Path="UnityEngine.XR.LegacyInputHelpers.csproj" />
   <Project Path="Unity.XR.OpenXR.Features.RuntimeDebugger.Editor.csproj" />
   <Project Path="Meta.XR.Editor.StatusMenu.csproj" />
@@ -118,6 +128,7 @@
   <Project Path="Unity.XR.OpenXR.TestTooling.csproj" />
   <Project Path="Unity.XR.OpenXR.Features.ConformanceAutomation.csproj" />
   <Project Path="Unity.XR.Hands.Analytics.Hooks.Editor.csproj" />
+  <Project Path="Oculus.Interaction.InterfaceSupport.csproj" />
   <Project Path="Unity.XR.OpenXR.Features.MockRuntime.csproj" />
   <Project Path="UnityEditor.SpatialTracking.csproj" />
   <Project Path="Unity.Collections.Editor.csproj" />
