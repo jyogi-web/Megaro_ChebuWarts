@@ -1,6 +1,7 @@
 ﻿<Solution>
   <Project Path="Unity.Mathematics.csproj" />
   <Project Path="Unity.Collections.csproj" />
+  <Project Path="Oculus.Platform.csproj" />
   <Project Path="Unity.XR.Simulation.csproj" />
   <Project Path="Unity.PerformanceTesting.Editor.csproj" />
   <Project Path="Unity.XR.OpenXR.csproj" />
@@ -58,6 +59,7 @@
   <Project Path="Unity.Settings.Editor.csproj" />
   <Project Path="Unity.InputSystem.TestFramework.csproj" />
   <Project Path="UnityEditor.XR.LegacyInputHelpers.csproj" />
+  <Project Path="Oculus.Platform.Editor.csproj" />
   <Project Path="Unity.XR.Interaction.Toolkit.Samples.Hands.Editor.csproj" />
   <Project Path="Unity.XR.ARFoundation.InternalUtils.csproj" />
   <Project Path="Unity.XR.ARFoundation.Editor.csproj" />
