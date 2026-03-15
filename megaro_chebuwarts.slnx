@@ -60,6 +60,7 @@
   <Project Path="Unity.InputSystem.TestFramework.csproj" />
   <Project Path="UnityEditor.XR.LegacyInputHelpers.csproj" />
   <Project Path="Unity.VisualScripting.Shared.Editor.csproj" />
+  <Project Path="Assembly-CSharp.csproj" />
   <Project Path="Unity.XR.ARFoundation.InternalUtils.csproj" />
   <Project Path="Unity.XR.ARFoundation.Editor.csproj" />
   <Project Path="Unity.EditorCoroutines.Editor.csproj" />
@@ -76,7 +77,6 @@
   <Project Path="Unity.XR.Interaction.Toolkit.Samples.InteractionSimulator.Editor.csproj" />
   <Project Path="Unity.XR.ARFoundation.InternalUtils.Editor.csproj" />
   <Project Path="Unity.XR.ARKit.FaceTracking.csproj" />
-  <Project Path="Assembly-CSharp.csproj" />
   <Project Path="Unity.VisualScripting.DocCodeExamples.csproj" />
   <Project Path="Unity.XR.OpenXR.TestTooling.csproj" />
   <Project Path="Unity.XR.OpenXR.Features.ConformanceAutomation.csproj" />
