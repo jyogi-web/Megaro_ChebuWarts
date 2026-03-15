@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "unity-mcp": {
+      "command": "cmd",
+      "args": ["/c", "%USERPROFILE%\\.unity\\relay\\relay_windows_x64.exe --mcp"]
+    }
+  }
+}
