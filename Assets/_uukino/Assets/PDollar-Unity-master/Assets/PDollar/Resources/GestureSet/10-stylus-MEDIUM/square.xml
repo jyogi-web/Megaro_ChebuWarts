@@ -1,0 +1,21 @@
+<Gesture Name="square~01" Subject="user" InputType="stylus" Speed="MEDIUM" NumPts="17">
+<Stroke index="1">
+<Point X="200" Y="200" T="1302126508000" Pressure="128"/>
+<Point X="350" Y="200" T="1302126508010" Pressure="128"/>
+<Point X="500" Y="200" T="1302126508020" Pressure="128"/>
+<Point X="650" Y="200" T="1302126508030" Pressure="128"/>
+<Point X="800" Y="200" T="1302126508040" Pressure="128"/>
+<Point X="800" Y="350" T="1302126508050" Pressure="128"/>
+<Point X="800" Y="500" T="1302126508060" Pressure="128"/>
+<Point X="800" Y="650" T="1302126508070" Pressure="128"/>
+<Point X="800" Y="800" T="1302126508080" Pressure="128"/>
+<Point X="650" Y="800" T="1302126508090" Pressure="128"/>
+<Point X="500" Y="800" T="1302126508100" Pressure="128"/>
+<Point X="350" Y="800" T="1302126508110" Pressure="128"/>
+<Point X="200" Y="800" T="1302126508120" Pressure="128"/>
+<Point X="200" Y="650" T="1302126508130" Pressure="128"/>
+<Point X="200" Y="500" T="1302126508140" Pressure="128"/>
+<Point X="200" Y="350" T="1302126508150" Pressure="128"/>
+<Point X="200" Y="200" T="1302126508160" Pressure="128"/>
+</Stroke>
+</Gesture>
