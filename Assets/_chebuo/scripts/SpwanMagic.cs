@@ -123,7 +123,7 @@ public class SpwanMagic : MonoBehaviour
         manager.Fire(new SpellRequest
         {
             Element = element,
-            Position = new Vector3(inputController.rpos.x,inputController.rpos.y+1.35f,inputController.rpos.z),
+            Position = center,
             Rotation = inputController.rrot,
         });
         Debug.Log("Fire!!");
