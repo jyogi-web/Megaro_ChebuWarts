@@ -2,6 +2,10 @@ using UnityEngine;
 
 namespace MegaroChebuWarts.Magic
 {
+    /// <summary>
+    /// 魔法のエフェクトに関するデータを定義するScriptableObject
+    /// 属性、エフェクトのプレハブ、持続時間、ダメージ量などを設定できる
+    /// </summary>
     [CreateAssetMenu(fileName = "SpellEffect_New", menuName = "Magic/Spell Effect Data")]
     public class SpellEffectData : ScriptableObject
     {
@@ -17,6 +21,10 @@ namespace MegaroChebuWarts.Magic
         [Header("プール設定")]
         [Tooltip("事前生成するインスタンス数")]
         public int InitialPoolSize = 3;
+
+        [Header("ダメージ")]
+        [Tooltip("与えるダメージ量")]
+        public float Damage = 10f;
 
         [Header("サウンド")]
         [Tooltip("発動時の効果音（任意）")]

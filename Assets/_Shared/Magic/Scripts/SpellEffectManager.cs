@@ -5,6 +5,11 @@ using UnityEngine;
 
 namespace MegaroChebuWarts.Magic
 {
+    /// <summary>
+    /// 魔法のエフェクトを管理するマネージャークラス
+    /// SpellEffectCatalogからデータを取得し、エフェクトの生成、再生、回収を行う
+    /// 同時に発生できるエフェクトの上限を設け、古いものから順に回収する仕組みも実装
+    /// </summary>
     public class SpellEffectManager : MonoBehaviour
     {
         [SerializeField] private SpellEffectCatalog catalog;
@@ -57,6 +62,11 @@ namespace MegaroChebuWarts.Magic
 
             var ps = obj.GetComponent<ParticleSystem>();
             if (ps != null) ps.Play();
+
+            // ダメージの初期化
+            var projectile = obj.GetComponent<SpellProjectile>();
+            if (projectile != null)
+                projectile.Initialize(request.Element, data.Damage);
 
             if (data.CastSound != null && _audio != null)
                 _audio.PlayOneShot(data.CastSound);

@@ -15,6 +15,10 @@ namespace MegaroChebuWarts.Magic
         Sky = 4,
     }
 
+    /// <summary>
+    /// 魔法の発動リクエストを表す構造体
+    /// 属性、位置、回転、威力などの情報をまとめて保持する
+    /// </summary>
     public struct SpellRequest
     {
         public MagicElement Element;
