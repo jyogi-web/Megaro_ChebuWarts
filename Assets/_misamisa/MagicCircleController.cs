@@ -30,10 +30,20 @@ public class MagicCircleController : MonoBehaviour
     [Header("Title")]
     public GameObject titleTextObject;
 
+    private bool isCircleActive = false;
+    private bool isExpanding = false;
+    private TitleSceneManager sceneManager;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+audioSource = GetComponent<AudioSource>();
+        sceneManager = FindObjectOfType<TitleSceneManager>();
+
+        // ゲーム開始時は非表示
+        magicCircleObject.SetActive(false);
+        centerStar.SetActive(false);
+        titleTextObject.SetActive(false);
     }
 
     // Update is called once per frame
