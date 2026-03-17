@@ -2,6 +2,10 @@ using UnityEngine;
 
 public class ScrollController : MonoBehaviour
 {
+    public void OpenScroll()
+    {
+        // あとで実装する
+    }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
