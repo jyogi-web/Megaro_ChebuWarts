@@ -7,6 +7,7 @@ using MegaroChebuWarts.Magic;
 public class SpwanMagic : MonoBehaviour
 {
     [SerializeField] GameObject worldControllerPos; 
+    [SerializeField] Transform wandTip;
     [SerializeField] LineRenderer circle;
     SpellEffectManager manager;
 
@@ -120,11 +121,16 @@ public class SpwanMagic : MonoBehaviour
     }
     private void Fire(MagicElement element)
     {
+        // 杖の先(wandTip)が設定されていればそこから、未設定ならコントローラの位置から出す
+        Transform spawnPoint = (wandTip != null) ? wandTip : worldControllerPos.transform;
+
         manager.Fire(new SpellRequest
         {
             Element = element,
-            Position = new Vector3(inputController.rpos.x,inputController.rpos.y+1.35f,inputController.rpos.z),
-            Rotation = inputController.rrot,
+            // ★変更：杖の先端（またはコントローラ）のワールド座標を使う
+            Position = spawnPoint.position, 
+            // ★変更：魔法の飛んでいく向き（回転）も杖の向きに合わせる
+            Rotation = spawnPoint.rotation, 
         });
         Debug.Log("Fire!!");
     }
