@@ -1,3 +1,9 @@
+/*
+ * MagicCircleController.cs
+ * 
+ * 魔法陣のコントローラー
+ */
+
 using UnityEngine;
 
 public class MagicCircleController : MonoBehaviour

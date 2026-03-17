@@ -1,3 +1,9 @@
+/*
+ * EasterEggController.cs
+ * 
+ * イースターエッグのコントローラー
+ */
+
 using UnityEngine;
 
 public class EasterEggController : MonoBehaviour

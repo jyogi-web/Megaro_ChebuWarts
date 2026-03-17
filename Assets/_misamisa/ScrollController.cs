@@ -1,3 +1,9 @@
+/*
+ * ScrollController.cs
+ * 
+ * スクロールのコントローラー
+ */
+ 
 using UnityEngine;
 
 public class ScrollController : MonoBehaviour
