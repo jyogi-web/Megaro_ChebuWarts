@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
-using PDollarGestureRecognizer; // ★ PDollarの機能を使うための宣言
+using PDollarGestureRecognizer;
 using System.IO;
 
 public class SpwanMagic2 : MonoBehaviour
@@ -9,8 +9,8 @@ public class SpwanMagic2 : MonoBehaviour
     [SerializeField] GameObject worldControllerPos; 
     [SerializeField] LineRenderer circle;
     
-    // ▼ 追加：ジェスチャー判定用の変数
-    public TextAsset[] gestureTemplates; // インスペクターから登録する正解図形データ(XML)
+    //ジェスチャー判定用の変数
+    public TextAsset[] gestureTemplates; // インスペクターから登録する正解図形データ
     public float minScore = 0.8f;        // 魔法が発動する最低一致率 (80%)
     private List<Gesture> trainingSet = new List<Gesture>(); // 読み込んだ図形データを格納するリスト
 
@@ -25,7 +25,7 @@ public class SpwanMagic2 : MonoBehaviour
     void Start()
     {
 
-        // ★ 追加：ゲーム開始時に、登録した図形のテンプレート(XML)を読み込む
+        //ゲーム開始時に、登録したXMLを読み込む
         if (gestureTemplates != null)
         {
             foreach (TextAsset xml in gestureTemplates)
@@ -37,9 +37,9 @@ public class SpwanMagic2 : MonoBehaviour
 
     void Update()
     {
-        // 軌跡の記録と描画（元のコードのまま）
+        // 軌跡の記録と描画
         if (inputController.rtrigger) {
-            // ★変更：コントローラーのワールド座標を直接取得する
+            // コントローラーのワールド座標を直接取得する
             Vector3 pos = worldControllerPos.transform.position;
             if (!hasLastPos || Vector3.Distance(lastPos, pos) > 0.02f) {
                 points.Add(pos);
@@ -57,31 +57,28 @@ public class SpwanMagic2 : MonoBehaviour
         }
         if (points.Count > 0) center /= points.Count;
 
-        // ★ 変更：トリガーを離した瞬間の処理
+        // トリガーを離した瞬間の処理
         if (!inputController.rtrigger && points.Count > 0 && hasLastPos) {
             
-            RecognizeAndSpawnMagic(); // 判定と魔法生成を実行
+            RecognizeAndSpawnMagic();
 
             hasLastPos = false;
             Invoke("DeleteMagicCircle", 5f);
         }   
     }
 
-    // ★ 追加：軌跡を判定して、結果に応じた魔法を出すメソッド
+    // 軌跡を判定して、結果に応じた魔法を出すメソッド
     void RecognizeAndSpawnMagic()
     {
-        // 誤作動防止：描いた点が少なすぎる（ただのトリガーのクリック等）場合は無視
         if (points.Count < 10) return;
 
-        // 1. 3D座標の軌跡を、PDollar用の2Dデータ(Point配列)に変換する
         Point[] pointArray = new Point[points.Count];
-        Transform cam = Camera.main.transform; // プレイヤーの視点を基準にする
+        Transform cam = Camera.main.transform;
         
         for (int i = 0; i < points.Count; i++)
         {
-            // 空間に描いた3D座標を、プレイヤーのカメラから見た相対的な平面(2D)座標に変換
             Vector3 localPoint = cam.InverseTransformPoint(points[i]);
-            pointArray[i] = new Point(localPoint.x, localPoint.y, 0); // 最後の0はストロークID(一筆書き)
+            pointArray[i] = new Point(localPoint.x, localPoint.y, 0);
         }
 
         // 2. アルゴリズムで図形判定を実行
@@ -94,12 +91,12 @@ public class SpwanMagic2 : MonoBehaviour
         if (result.Score >= minScore)
         {
             // XMLのファイル名（ジェスチャー名）に応じて magicNumber を変更
-            if (result.GestureClass == "Circle") {
-                magicNumber = 0; // 丸なら magics[0]
-            } else if (result.GestureClass == "Star") {
-                magicNumber = 1; // 星なら magics[1]
+            if (result.GestureClass == "water") {
+                magicNumber = 0;
+            } else if (result.GestureClass == "square") {
+                magicNumber = 1;
             } else if (result.GestureClass == "Triangle") {
-                magicNumber = 2; // 三角なら magics[2]
+                magicNumber = 2;
             }
 
             // 魔法オブジェクトを生成
