@@ -948,11 +948,11 @@ PlayerSettings:
   captureStartupLogs: {}
   activeInputHandler: 1
   windowsGamepadBackendHint: 0
-  cloudProjectId: 8e38d4ee-cdb1-4bfe-99fc-50f9f4da417e
+  cloudProjectId: eed0950e-ed08-41ef-8628-91ddb3ea250c
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: XRtest
-  organizationId: chebuo
+  projectName: ChebuWarts
+  organizationId: uozumi05
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   hmiLoadingImage: {fileID: 0}

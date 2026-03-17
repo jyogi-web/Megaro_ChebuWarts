@@ -1,0 +1,23 @@
+{
+    "name": "MegaroChebuWarts.Multiplayer",
+    "rootNamespace": "MegaroChebuWarts.Multiplayer",
+    "references": [
+        "Unity.Netcode.Runtime",
+        "Unity.Services.Lobbies",
+        "Unity.Services.Relay",
+        "Unity.Services.Authentication",
+        "Unity.Services.Core",
+        "MegaroChebuWarts.Monster",
+        "MegaroChebuWarts.Magic",
+        "Unity.TextMeshPro"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
