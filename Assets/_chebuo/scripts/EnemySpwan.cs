@@ -4,6 +4,9 @@ using UnityEngine;
 public class EnemySpwan : MonoBehaviour
 {
     [SerializeField] GameObject enemy; 
+    GameObject[] allEnemy;
+    int enemyNumber;
+    int limitEnemy=8;
     float interval=3;
     
     void Start()
@@ -14,11 +17,12 @@ public class EnemySpwan : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        allEnemy=GameObject.FindGameObjectsWithTag("enemy");
+        enemyNumber=allEnemy.Length;
     }
     IEnumerator EnemyInstantiater()
     {
-        while (true)
+        while (enemyNumber<limitEnemy)
         {
             float angle=Random.Range(0,360);
             float rad=angle*Mathf.Deg2Rad;
