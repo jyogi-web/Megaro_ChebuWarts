@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: SpellEffect_Earth
   m_EditorClassIdentifier: Assembly-CSharp::MegaroChebuWarts.Magic.SpellEffectData
   Element: 0
-  EffectPrefab: {fileID: 0}
+  EffectPrefab: {fileID: 1314945738539566, guid: 32c9fd11a72259d45aa26ae41c34c5aa, type: 3}
   Duration: 2
   InitialPoolSize: 3
+  Damage: 10
   CastSound: {fileID: 0}

@@ -2,6 +2,10 @@ using UnityEngine;
 
 namespace MegaroChebuWarts.Magic
 {
+    /// <summary>
+    /// 魔法のエフェクトデータをまとめて管理するカタログ的なScriptableObject
+    /// 各属性に対応するSpellEffectDataを配列で保持し、属性からデータを取得できるようにする
+    /// </summary>
     [CreateAssetMenu(fileName = "SpellEffectCatalog", menuName = "Magic/Spell Effect Catalog")]
     public class SpellEffectCatalog : ScriptableObject
     {
