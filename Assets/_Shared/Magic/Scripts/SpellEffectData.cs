@@ -24,6 +24,7 @@ namespace MegaroChebuWarts.Magic
 
         [Header("ダメージ")]
         [Tooltip("与えるダメージ量")]
+        [Min(0f)]
         public float Damage = 10f;
 
         [Header("サウンド")]

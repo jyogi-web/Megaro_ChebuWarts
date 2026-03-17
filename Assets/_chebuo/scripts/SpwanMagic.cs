@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using MegaroChebuWarts.Magic;
 
 public class SpwanMagic : MonoBehaviour
 {
@@ -39,6 +40,10 @@ public class SpwanMagic : MonoBehaviour
         if (inputController.rtrigger)Debug.Log(center);
         if(!inputController.rtrigger&&points.Count>0&&hasLastPos){
             GameObject magic=Instantiate(magics[magicNumber],center,Quaternion.identity);
+            var projectile=magic.GetComponent<SpellProjectile>();
+            if(projectile!=null){
+                projectile.Initialize((MagicElement)magicNumber,10f);
+            }
             Destroy(magic,5f);
             hasLastPos=false;
             Invoke("DeleteMagicCircle",5f);

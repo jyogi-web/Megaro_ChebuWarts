@@ -13,14 +13,16 @@ namespace MegaroChebuWarts.Monster
 
         protected float currentHp;
 
-        protected virtual void Start()
+        protected virtual void OnEnable()
         {
-            currentHp = maxHp;
+            currentHp = Mathf.Max(0f, maxHp);
         }
 
         public virtual void TakeDamage(MagicElement element, float damage)
         {
+            if (damage <= 0f) return;
             currentHp -= damage;
+            currentHp = Mathf.Max(0f, currentHp);
             Debug.Log($"{gameObject.name} が {element} 属性の魔法で {damage} ダメージを受けた！ 残りHP: {currentHp}");
 
             if (currentHp <= 0f)

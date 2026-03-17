@@ -22,6 +22,12 @@ namespace MegaroChebuWarts.Magic
 
         private bool _hasHit;
         private Renderer[] _renderers;
+        private float _initialHitCheckRadius;
+
+        private void Awake()
+        {
+            _initialHitCheckRadius = hitCheckRadius;
+        }
 
         public void Initialize(MagicElement element, float damage)
         {
@@ -33,6 +39,7 @@ namespace MegaroChebuWarts.Magic
         private void OnEnable()
         {
             _hasHit = false;
+            hitCheckRadius = _initialHitCheckRadius;
             if (autoSizeFromParticle)
                 StartCoroutine(AutoSizeRadius());
         }

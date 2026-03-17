@@ -58,15 +58,16 @@ namespace MegaroChebuWarts.Magic
 
             var obj = GetFromPool(request.Element, data.EffectPrefab);
             obj.transform.SetPositionAndRotation(request.Position, request.Rotation);
+
+            // SetActiveより前にInitializeを呼び、OnEnable/FixedUpdateで未初期化値が使われるのを防ぐ
+            var projectile = obj.GetComponent<SpellProjectile>();
+            if (projectile != null)
+                projectile.Initialize(request.Element, data.Damage);
+
             obj.SetActive(true);
 
             var ps = obj.GetComponent<ParticleSystem>();
             if (ps != null) ps.Play();
-
-            // ダメージの初期化
-            var projectile = obj.GetComponent<SpellProjectile>();
-            if (projectile != null)
-                projectile.Initialize(request.Element, data.Damage);
 
             if (data.CastSound != null && _audio != null)
                 _audio.PlayOneShot(data.CastSound);
