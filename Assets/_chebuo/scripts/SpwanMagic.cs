@@ -127,10 +127,8 @@ public class SpwanMagic : MonoBehaviour
         manager.Fire(new SpellRequest
         {
             Element = element,
-            // ★変更：杖の先端（またはコントローラ）のワールド座標を使う
-            Position = spawnPoint.position, 
-            // ★変更：魔法の飛んでいく向き（回転）も杖の向きに合わせる
-            Rotation = spawnPoint.rotation, 
+            Position = center,
+            Rotation = inputController.rrot,
         });
         Debug.Log("Fire!!");
     }

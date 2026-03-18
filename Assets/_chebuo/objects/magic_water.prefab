@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 590872325501455307}
   - component: {fileID: 1085615445485740235}
   - component: {fileID: 3408627019028409036}
-  - component: {fileID: 6372517316005647810}
   m_Layer: 0
   m_Name: magic_water
   m_TagString: Untagged
@@ -3623,9 +3622,9 @@ ParticleSystem:
         m_NumAlphaKeys: 2
     range: {x: 0, y: 1}
   CollisionModule:
-    enabled: 0
+    enabled: 1
     serializedVersion: 4
-    type: 0
+    type: 1
     collisionMode: 0
     colliderForce: 0
     multiplyColliderForceByParticleSize: 0
@@ -3741,7 +3740,7 @@ ParticleSystem:
     m_EnergyLossOnCollision:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0
+      scalar: 1
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -3800,7 +3799,7 @@ ParticleSystem:
     maxCollisionShapes: 256
     quality: 0
     voxelSize: 0.5
-    collisionMessages: 0
+    collisionMessages: 1
     collidesWithDynamic: 1
     interiorCollisions: 0
   TriggerModule:
@@ -4899,19 +4898,5 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 1
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 64
   m_CollisionDetection: 0
---- !u!114 &6372517316005647810
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4247436408913820659}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c997bd6d099bb4275bc7518c425d887b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MegaroChebuWarts.Magic.SpellProjectile
-  element: 0
-  damage: 10
