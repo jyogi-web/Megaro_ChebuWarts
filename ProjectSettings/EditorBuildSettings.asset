@@ -6,6 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/_chebuo/GameScene.unity
+    guid: 1e3d4866e9949b647b491e33b0db8356
+  - enabled: 1
+    path: Assets/_misamisa/title.unity
+    guid: e4e3b563048507e40ac3e7114f007d09
+  - enabled: 1
     path: Assets/Scenes/LobbyScene.unity
     guid: f89264a518de3489094993cc559a8d79
   - enabled: 1
@@ -14,9 +20,6 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Samples/XR Interaction Toolkit/3.3.1/Starter Assets/DemoScene.unity
     guid: 319dafa5c80f29f428dc1e0d03f04177
-  - enabled: 1
-    path: Assets/_misamisa/title.unity
-    guid: e4e3b563048507e40ac3e7114f007d09
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 283fde41e87983548ac7cdb612fe2b85, type: 2}
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: 2f13e7deeee1e7a459318f24a7bede60, type: 2}
