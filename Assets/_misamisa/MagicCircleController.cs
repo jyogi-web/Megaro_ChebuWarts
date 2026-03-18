@@ -61,6 +61,9 @@ public class MagicCircleController : MonoBehaviour
     {
         if (!isCircleActive && !isExpanding)
             CheckControllerSpread();
+
+        if (isCircleActive)
+            CheckGrab(); // コントローラーが近づいたかチェック
     }
 
     void CheckControllerSpread()
@@ -120,6 +123,35 @@ public class MagicCircleController : MonoBehaviour
         centerStar.SetActive(true);
         isCircleActive = true;
         
+    }
+
+    void CheckGrab()
+    {
+        if (leftControllerTransform == null || rightControllerTransform == null) return;
+
+        // コントローラーが星に近いか確認
+        bool leftNear = Vector3.Distance(
+            leftControllerTransform.position,
+            centerStar.transform.position
+        ) < grabRadius;
+
+        bool rightNear = Vector3.Distance(
+            rightControllerTransform.position,
+            centerStar.transform.position
+        ) < grabRadius;
+
+        // グリップボタンを押した瞬間に判定
+        bool leftGrip = OVRInput.GetDown(OVRInput.Button.PrimaryHandTrigger);
+        bool rightGrip = OVRInput.GetDown(OVRInput.Button.SecondaryHandTrigger);
+
+        if ((leftNear && leftGrip) || (rightNear && rightGrip))
+        {
+            if (grabSE && audioSource)
+                audioSource.PlayOneShot(grabSE);
+
+            Debug.Log("ゲームスタート");
+            sceneManager.OnGameStart();
+        }
     }
 
     // イーズアウト：最初速く、最後ゆっくり止まる
