@@ -1563,6 +1563,10 @@ PrefabInstance:
       propertyPath: m_BackGroundColor.r
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1178791450436251564, guid: 7058f9ebe467b894fac7a1e60a04db82, type: 3}
+      propertyPath: m_RequestedTrackingOriginMode
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1717954561962503725, guid: 7058f9ebe467b894fac7a1e60a04db82, type: 3}
       propertyPath: m_Name
       value: XR Origin (XR Rig)

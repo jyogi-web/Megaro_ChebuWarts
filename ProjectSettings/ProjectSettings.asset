@@ -147,7 +147,6 @@ PlayerSettings:
   preloadedAssets:
   - {fileID: 11400000, guid: 15c3b43ba386bf74d92c8a346522e139, type: 2}
   - {fileID: 11400000, guid: 39f678242bd0ba446963dc8fd385f83c, type: 2}
-  - {fileID: 11400000, guid: a683058a521aecf45aa8242555d1caf8, type: 2}
   - {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   metroInputSource: 0
   wsaTransparentSwapchain: 0
@@ -962,11 +961,11 @@ PlayerSettings:
   captureStartupLogs: {}
   activeInputHandler: 1
   windowsGamepadBackendHint: 0
-  cloudProjectId: 8e38d4ee-cdb1-4bfe-99fc-50f9f4da417e
+  cloudProjectId: eed0950e-ed08-41ef-8628-91ddb3ea250c
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: XRtest
-  organizationId: chebuo
+  projectName: ChebuWarts
+  organizationId: uozumi05
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   hmiLoadingImage: {fileID: 0}

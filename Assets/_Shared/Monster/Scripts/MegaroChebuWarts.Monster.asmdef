@@ -1,0 +1,16 @@
+{
+    "name": "MegaroChebuWarts.Monster",
+    "rootNamespace": "MegaroChebuWarts.Monster",
+    "references": [
+        "MegaroChebuWarts.Magic"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
