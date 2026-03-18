@@ -47,6 +47,11 @@ namespace MegaroChebuWarts.Multiplayer
                 Debug.LogWarning("[DisruptorUI] MonsterSpawnerが未設定です");
                 return;
             }
+            if (!monsterSpawner.IsSpawned)
+            {
+                Debug.LogWarning("[DisruptorUI] MonsterSpawnerがまだSpawnされていません");
+                return;
+            }
 
             // ミニマップ上の正規化座標(0~1)を取得
             RectTransform rectTransform = _minimapImage.rectTransform;

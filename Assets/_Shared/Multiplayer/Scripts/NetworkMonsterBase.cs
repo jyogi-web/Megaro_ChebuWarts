@@ -70,7 +70,7 @@ namespace MegaroChebuWarts.Multiplayer
         /// <summary>
         /// Client からダメージ情報を Server に転送する ServerRpc
         /// </summary>
-        [ServerRpc(RequireOwnership = false)]
+        [Rpc(SendTo.Server, InvokePermission = RpcInvokePermission.Everyone)]
         public void TakeDamageServerRpc(MagicElement element, float damage)
         {
             _monsterBase.TakeDamage(element, damage);

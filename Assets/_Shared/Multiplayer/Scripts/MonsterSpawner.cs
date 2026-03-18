@@ -14,7 +14,7 @@ namespace MegaroChebuWarts.Multiplayer
         /// ClientがServerに対してモンスタースポーンを要求するServerRpc
         /// RequireOwnership=false のため全クライアントから呼び出し可能
         /// </summary>
-        [ServerRpc(RequireOwnership = false)]
+        [Rpc(SendTo.Server, InvokePermission = RpcInvokePermission.Everyone)]
         public void RequestSpawnMonsterServerRpc(Vector3 position, int prefabIndex)
         {
             if (monsterPrefabs == null || prefabIndex < 0 || prefabIndex >= monsterPrefabs.Length)

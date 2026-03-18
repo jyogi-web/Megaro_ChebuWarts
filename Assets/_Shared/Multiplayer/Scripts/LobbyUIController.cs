@@ -116,8 +116,16 @@ namespace MegaroChebuWarts.Multiplayer
         private void OnGameReady()
         {
             SetStatus("Game starting!");
-            // TODO: ゲーム開始！
-            UnityEngine.SceneManagement.SceneManager.LoadScene("SampleScene");
+            // TOOD: ゲーム開始！
+            
+            // HostのみNGOのSceneManagerで遷移（Clientも自動追従）
+            if (Unity.Netcode.NetworkManager.Singleton.IsHost)
+            {
+                Unity.Netcode.NetworkManager.Singleton.SceneManager.LoadScene(
+                    "SampleScene",
+                    UnityEngine.SceneManagement.LoadSceneMode.Single
+                );
+            }
         }
 
         private void SetStatus(string message)
