@@ -18,8 +18,8 @@ public class EnemyController : MonoBehaviour
     void Update()
     {
         if(HP<=0){
-                rb.useGravity=true;
-                Destroy(gameObject,3f);
+            rb.useGravity=true;
+            Destroy(gameObject,3f);
         }
     }
 }

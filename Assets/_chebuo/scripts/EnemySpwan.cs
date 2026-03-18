@@ -24,12 +24,12 @@ public class EnemySpwan : MonoBehaviour
     {
         while (enemyNumber<limitEnemy)
         {
+            yield return  new WaitForSeconds(interval);
             float angle=Random.Range(0,360);
             float rad=angle*Mathf.Deg2Rad;
             float rx=Mathf.Cos(rad);
             float ry=Mathf.Sin(rad);
             GameObject obj=Instantiate(enemy,new Vector3(rx*8,4,ry*8),Quaternion.identity);
-            yield return  new WaitForSeconds(interval);
         }
     }
 }
