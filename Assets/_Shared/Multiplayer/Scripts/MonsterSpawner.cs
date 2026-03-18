@@ -22,6 +22,12 @@ namespace MegaroChebuWarts.Multiplayer
         {
             ulong senderId = rpcParams.Receive.SenderClientId;
 
+            if (GameFlowController.Instance != null && GameFlowController.Instance.IsGameEnded)
+            {
+                Debug.LogWarning($"[MonsterSpawner] Spawn rejected after game end. client={senderId}");
+                return;
+            }
+
             // サーバー側レート制限
             float now = Time.time;
             if (_clientLastSpawnTime.TryGetValue(senderId, out float lastTime) && now - lastTime < spawnCooldownSeconds)
@@ -46,7 +52,12 @@ namespace MegaroChebuWarts.Multiplayer
 
             // サーバー側でVRプレイヤー位置を基準にワールド座標を計算
             var vrTracker = VRPlayerTracker.GetFirst();
-            Vector3 vrPos = vrTracker != null ? vrTracker.Position.Value : Vector3.zero;
+            if (vrTracker == null)
+            {
+                Debug.LogWarning("[MonsterSpawner] VRPlayerTracker not ready");
+                return;
+            }
+            Vector3 vrPos = vrTracker.Position.Value;
             Vector3 position = new Vector3(
                 vrPos.x + (normX - 0.5f) * mapRange,
                 0f,

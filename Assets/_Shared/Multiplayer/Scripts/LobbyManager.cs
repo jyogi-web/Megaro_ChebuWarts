@@ -80,7 +80,11 @@ namespace MegaroChebuWarts.Multiplayer
             // TODO: ロビー作成完了
 
             // UnityTransportにRelayデータをセット
+            if (NetworkManager.Singleton == null)
+                throw new InvalidOperationException("NetworkManager.Singleton is null.");
             var transport = NetworkManager.Singleton.GetComponent<UnityTransport>();
+            if (transport == null)
+                throw new InvalidOperationException("UnityTransport component is missing.");
             transport.SetHostRelayData(
                 allocation.RelayServer.IpV4,
                 (ushort)allocation.RelayServer.Port,
@@ -104,13 +108,23 @@ namespace MegaroChebuWarts.Multiplayer
             await InitializeServicesAsync();
 
             _currentLobby = await LobbyService.Instance.JoinLobbyByIdAsync(lobbyId);
-            string joinCode = _currentLobby.Data[JoinCodeKey].Value;
+            if (_currentLobby.Data == null ||
+                !_currentLobby.Data.TryGetValue(JoinCodeKey, out var joinCodeData) ||
+                string.IsNullOrWhiteSpace(joinCodeData?.Value))
+            {
+                throw new InvalidOperationException("Lobby join code is missing.");
+            }
+            string joinCode = joinCodeData.Value;
             Debug.Log($"[LobbyManager] Joined lobby. JoinCode:{joinCode}");
             // TODO: ロビー参加完了
 
             JoinAllocation joinAllocation = await RelayService.Instance.JoinAllocationAsync(joinCode);
 
+            if (NetworkManager.Singleton == null)
+                throw new InvalidOperationException("NetworkManager.Singleton is null.");
             var transport = NetworkManager.Singleton.GetComponent<UnityTransport>();
+            if (transport == null)
+                throw new InvalidOperationException("UnityTransport component is missing.");
             transport.SetClientRelayData(
                 joinAllocation.RelayServer.IpV4,
                 (ushort)joinAllocation.RelayServer.Port,

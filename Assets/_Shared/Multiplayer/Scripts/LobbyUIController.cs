@@ -117,9 +117,10 @@ namespace MegaroChebuWarts.Multiplayer
 
         private void OnGameReady()
         {
+            LobbyManager.Instance.OnGameReady -= OnGameReady;
             SetStatus("Game starting!");
             // TOOD: ゲーム開始！
-            
+
             // HostのみNGOのSceneManagerで遷移（Clientも自動追従）
             if (Unity.Netcode.NetworkManager.Singleton.IsHost)
             {
@@ -128,6 +129,12 @@ namespace MegaroChebuWarts.Multiplayer
                     UnityEngine.SceneManagement.LoadSceneMode.Single
                 );
             }
+        }
+
+        private void OnDestroy()
+        {
+            if (LobbyManager.Instance != null)
+                LobbyManager.Instance.OnGameReady -= OnGameReady;
         }
 
         private void SetStatus(string message)
