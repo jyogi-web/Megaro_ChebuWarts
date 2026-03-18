@@ -6,7 +6,8 @@ using UnityEngine.UI;
 namespace MegaroChebuWarts.Multiplayer
 {
     /// <summary>
-    /// スマホ/PC側の妨害UI。ミニマップをタップしてVR空間に敵をスポーンする。
+    /// スマホ/PC側の妨害UI。
+    /// 画面全体に俯瞰マップを表示し、タップした位置にVR空間の敵をスポーンする。
     /// </summary>
     [RequireComponent(typeof(RawImage))]
     public class DisruptorUIController : MonoBehaviour, IPointerClickHandler
@@ -14,11 +15,15 @@ namespace MegaroChebuWarts.Multiplayer
         [Header("スポーン設定")]
         [SerializeField] private MonsterSpawner monsterSpawner;
         [SerializeField] private int monsterPrefabIndex = 0;
-        [SerializeField] private float mapRange = 20f;
+        [SerializeField] private MinimapCameraController minimapCamera;
 
         [Header("クールダウン UI")]
         [SerializeField] private Image cooldownOverlay;
         [SerializeField] private float cooldownSeconds = 3f;
+
+        [Header("ミニマップ カメラ設定")]
+        [SerializeField] private Camera minimapCam;
+        [SerializeField] private RenderTexture minimapRenderTexture;
 
         private RawImage _minimapImage;
         private bool _onCooldown;
@@ -27,16 +32,20 @@ namespace MegaroChebuWarts.Multiplayer
         {
             _minimapImage = GetComponent<RawImage>();
 
-            // Hostの場合はVR側なのでUIを非表示
-            if (Unity.Netcode.NetworkManager.Singleton != null &&
-                Unity.Netcode.NetworkManager.Singleton.IsHost)
-            {
-                gameObject.SetActive(false);
-                return;
-            }
+            // RenderTextureをRawImageにセット（常に実行）
+            if (minimapRenderTexture != null)
+                _minimapImage.texture = minimapRenderTexture;
 
             if (cooldownOverlay != null)
                 cooldownOverlay.fillAmount = 0f;
+        }
+
+        private void Start()
+        {
+            // NetworkManager接続後にHost/Client判定（Awake時はSingletonがnullの場合がある）
+            var nm = Unity.Netcode.NetworkManager.Singleton;
+            if (nm != null && nm.IsHost)
+                gameObject.SetActive(false);
         }
 
         public void OnPointerClick(PointerEventData eventData)
@@ -66,6 +75,9 @@ namespace MegaroChebuWarts.Multiplayer
             );
             normalized.x = Mathf.Clamp01(normalized.x);
             normalized.y = Mathf.Clamp01(normalized.y);
+
+            // mapRangeはMinimapCameraのorthographicSize*2と一致させる
+            float mapRange = minimapCam != null ? minimapCam.orthographicSize * 2f : 30f;
 
             monsterSpawner.RequestSpawnMonsterServerRpc(normalized.x, normalized.y, mapRange, monsterPrefabIndex);
             Debug.Log($"[DisruptorUI] スポーンリクエスト送信: normalized={normalized}, mapRange={mapRange}");
