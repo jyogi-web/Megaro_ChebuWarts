@@ -12,11 +12,11 @@ public class MagicCircleController : MonoBehaviour
     [Header("Magic Circle")]
     public GameObject magicCircleObject;
     public GameObject centerStar;
-    public float expandDuration = 1.5f;
+    public float expandDuration = 5f;
 
     [Header("Controller Settings")]
     public float activationDistance = 1.0f;
-    public float grabRadius = 0.15f;
+    public float grabRadius = 5f;
 
     [Header("OVR Anchors")]
     public Transform leftControllerTransform;
@@ -61,6 +61,9 @@ public class MagicCircleController : MonoBehaviour
     {
         if (!isCircleActive && !isExpanding)
             CheckControllerSpread();
+
+        if (isCircleActive)
+            CheckGrab(); // コントローラーが近づいたかチェック
     }
 
     void CheckControllerSpread()
@@ -120,6 +123,35 @@ public class MagicCircleController : MonoBehaviour
         centerStar.SetActive(true);
         isCircleActive = true;
         
+    }
+
+    void CheckGrab()
+    {
+        if (leftControllerTransform == null || rightControllerTransform == null) return;
+
+        // コントローラーが星に近いか確認
+        bool leftNear = Vector3.Distance(
+            leftControllerTransform.position,
+            centerStar.transform.position
+        ) < grabRadius;
+
+        bool rightNear = Vector3.Distance(
+            rightControllerTransform.position,
+            centerStar.transform.position
+        ) < grabRadius;
+
+        // グリップボタンを押した瞬間に判定
+        bool leftGrip = OVRInput.GetDown(OVRInput.Button.PrimaryHandTrigger);
+        bool rightGrip = OVRInput.GetDown(OVRInput.Button.SecondaryHandTrigger);
+
+        if ((leftNear) || (rightNear && rightGrip))
+        {
+            if (grabSE && audioSource)
+                audioSource.PlayOneShot(grabSE);
+
+            Debug.Log("ゲームスタート");
+            sceneManager.OnGameStart();
+        }
     }
 
     // イーズアウト：最初速く、最後ゆっくり止まる
