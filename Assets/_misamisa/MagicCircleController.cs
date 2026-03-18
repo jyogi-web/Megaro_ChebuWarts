@@ -4,6 +4,7 @@
  * 魔法陣のコントローラー
  */
 
+using System.Collections.Generic;
 using UnityEngine;
 using System.Collections;
 
@@ -30,6 +31,11 @@ public class MagicCircleController : MonoBehaviour
 
     [Header("Title")]
     public GameObject titleTextObject;
+
+    [Header("Guidance")]
+public ParticleSystem guidanceParticle;
+public Transform playerTransform; // XR Origin(XR Rig)をドラッグ
+private List<ParticleSystem> trailParticles = new List<ParticleSystem>();
 
     private bool isCircleActive = false;
     private bool isExpanding = false;
@@ -63,7 +69,38 @@ public class MagicCircleController : MonoBehaviour
             CheckControllerSpread();
 
         if (isCircleActive)
-            CheckGrab(); // コントローラーが近づいたかチェック
+        {
+            CheckGrab(); 
+            UpdateGuidanceParticles();
+        }
+            
+    }
+
+    void UpdateGuidanceParticles()
+    {
+        if (trailParticles.Count == 0) return;
+        if (playerTransform == null) return;
+
+        int count = trailParticles.Count;
+        for (int i = 0; i < count; i++)
+        {  
+            if (trailParticles[i] == null) continue;
+
+            float t = (float)i / (count - 1);
+            Vector3 target = Vector3.Lerp(
+                playerTransform.position + Vector3.up,
+                centerStar.transform.position,
+                t
+            );
+
+            // なめらかに追従
+            trailParticles[i].transform.position = Vector3.Lerp(
+                trailParticles[i].transform.position,
+                target,
+                Time.deltaTime * 3f
+            );
+            
+        }
     }
 
     void CheckControllerSpread()
@@ -122,8 +159,35 @@ public class MagicCircleController : MonoBehaviour
         titleTextObject.SetActive(true);
         centerStar.SetActive(true);
         isCircleActive = true;
-        
+
+        StartCoroutine(SpawnGuidanceParticles());
+
     }
+
+    IEnumerator SpawnGuidanceParticles()
+    {
+        if (guidanceParticle == null || playerTransform == null) yield break;
+
+        int particleCount = 8; // 道案内の粒子の数
+
+        for (int i = 0; i < particleCount; i++)
+        {
+            // プレイヤーからCenterStarまでを等間隔に配置
+            float t = (float)i / (particleCount - 1);
+            Vector3 pos = Vector3.Lerp(
+                playerTransform.position + Vector3.up,
+                centerStar.transform.position,
+                t
+        )   ;
+
+            // 粒子を生成
+            ParticleSystem p = Instantiate(guidanceParticle, pos, Quaternion.identity);
+            p.gameObject.SetActive(true);
+            trailParticles.Add(p);
+
+            yield return new WaitForSeconds(0.1f); // 少しずつ出現
+        }
+    }   
 
     void CheckGrab()
     {

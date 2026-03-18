@@ -5,6 +5,34 @@ TagManager:
   serializedVersion: 3
   tags:
   - enemy
+
+  - QDSUIBackplateGradient
+  - QDSUIToggleBorderlessButton
+  - QDSUIToggleButton
+  - QDSUIToggleSwitch
+  - QDSUITooltip
+  - QDSUISharedThemeColor
+  - QDSUIAccentColor
+  - QDSUIBorderlessButton
+  - QDSUISecondaryButton
+  - QDSUIIcon
+  - QDSUITextSecondaryColor
+  - QDSUISection
+  - Locomotion
+  - PassThroughButton
+  - LocoButton
+  - LocoText
+  - PassThrough
+  - SamplesInfoPanel
+  - QDSUIPrimaryButton
+  - QDSUITextInvertedColor
+  - QDSUITextSecondaryInvertedColor
+  - QDSUIDestructiveButton
+  - QDSUIToggleCheckboxRadio
+  - QDSUIBackplate
+  - QDSUITextInputField
+  - magic
+
   layers:
   - Default
   - TransparentFX
@@ -13,7 +41,7 @@ TagManager:
   - Water
   - UI
   - Enemy
-  - 
+  - PostProcess
   - 
   - 
   - 

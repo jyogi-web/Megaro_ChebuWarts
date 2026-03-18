@@ -3,6 +3,7 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour
 {
     [SerializeField] GameObject target;
+    GameManager gameManager;
     public int HP;
     public float speed;
     Rigidbody rb;
@@ -18,8 +19,7 @@ public class EnemyController : MonoBehaviour
     {
         if(HP<=0){
             rb.useGravity=true;
+            Destroy(gameObject,3f);
         }
-        //this.transform.position=Vector3.Lerp(transform.position,target.transform.position,speed*Time.deltaTime);
-        
     }
 }
