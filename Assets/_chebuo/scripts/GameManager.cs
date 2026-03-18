@@ -16,17 +16,30 @@ public class GameManager : MonoBehaviour
     [SerializeField] Text killText;
     [SerializeField] Text timeText;
 
-    [SerializeField]GameObject finishScreen;
+    [SerializeField] GameObject finishScreen;
+    [SerializeField] GameObject gameOverScreen;
+    [SerializeField] float fallThreshold = -20f;
+
+    private Transform playerTransform;
+    private bool gameOver = false;
+
     void Start()
     {
         StartCoroutine(StartCount());
         finishScreen.SetActive(false);
+        if (gameOverScreen != null) gameOverScreen.SetActive(false);
+
+        var xrOrigin = GameObject.Find("XR Origin (XR Rig)");
+        if (xrOrigin != null) playerTransform = xrOrigin.transform;
+        Debug.Log(playerTransform);
     }
     void Update()
     {
+        if (gameOver) return;
+
         if (countdown == 0)
         {
-            countdownText.enabled=false;
+            if (countdownText != null) countdownText.enabled=false;
             active=true;
         }
         if(active){
@@ -34,6 +47,13 @@ public class GameManager : MonoBehaviour
             string currentText=time.ToString("F2");
             t_text.text=currentText;
         }
+
+        if (active && playerTransform != null && playerTransform.position.y < fallThreshold)
+        {
+            GameOver();
+            return;
+        }
+
         int count = GameObject.FindGameObjectsWithTag("enemy").Length;
         Debug.Log(count);
         if(count==0&&active){
@@ -44,6 +64,16 @@ public class GameManager : MonoBehaviour
             timeText.text=timeStr;
         }
     }
+
+    private void GameOver()
+    {
+        active = false;
+        gameOver = true;
+        Debug.Log("Game Over: プレイヤーが落下しました");
+        if (gameOverScreen != null)
+            gameOverScreen.SetActive(true);
+    }
+
     public void SceneMove()
     {
         SceneManager.LoadScene("title");
@@ -53,7 +83,7 @@ public class GameManager : MonoBehaviour
         while (countdown>0)
         {
             Debug.Log(countdown);
-            countdownText.text=countdown.ToString();
+            if (countdownText != null) countdownText.text=countdown.ToString();
             yield return new WaitForSeconds(1);
             countdown--;
         }
