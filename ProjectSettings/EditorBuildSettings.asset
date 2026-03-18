@@ -11,6 +11,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Samples/XR Interaction Toolkit/3.3.1/Starter Assets/DemoScene.unity
     guid: 319dafa5c80f29f428dc1e0d03f04177
+  - enabled: 1
+    path: Assets/_misamisa/title.unity
+    guid: e4e3b563048507e40ac3e7114f007d09
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 283fde41e87983548ac7cdb612fe2b85, type: 2}
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: 2f13e7deeee1e7a459318f24a7bede60, type: 2}
