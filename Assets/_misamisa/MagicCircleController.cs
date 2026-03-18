@@ -12,11 +12,11 @@ public class MagicCircleController : MonoBehaviour
     [Header("Magic Circle")]
     public GameObject magicCircleObject;
     public GameObject centerStar;
-    public float expandDuration = 1.5f;
+    public float expandDuration = 5f;
 
     [Header("Controller Settings")]
     public float activationDistance = 1.0f;
-    public float grabRadius = 0.15f;
+    public float grabRadius = 5f;
 
     [Header("OVR Anchors")]
     public Transform leftControllerTransform;
@@ -144,7 +144,7 @@ public class MagicCircleController : MonoBehaviour
         bool leftGrip = OVRInput.GetDown(OVRInput.Button.PrimaryHandTrigger);
         bool rightGrip = OVRInput.GetDown(OVRInput.Button.SecondaryHandTrigger);
 
-        if ((leftNear && leftGrip) || (rightNear && rightGrip))
+        if ((leftNear) || (rightNear && rightGrip))
         {
             if (grabSE && audioSource)
                 audioSource.PlayOneShot(grabSE);
