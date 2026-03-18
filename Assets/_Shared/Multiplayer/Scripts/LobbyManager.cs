@@ -45,9 +45,7 @@ namespace MegaroChebuWarts.Multiplayer
         {
             if (UnityServices.State != ServicesInitializationState.Initialized)
             {
-                var options = new InitializationOptions();
-                options.SetEnvironmentName("production");
-                await UnityServices.InitializeAsync(options);
+                await UnityServices.InitializeAsync();
             }
 
             if (!AuthenticationService.Instance.IsAuthorized)
