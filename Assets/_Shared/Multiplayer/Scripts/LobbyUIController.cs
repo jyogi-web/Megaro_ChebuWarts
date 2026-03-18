@@ -68,6 +68,7 @@ namespace MegaroChebuWarts.Multiplayer
 
             try
             {
+                LobbyManager.Instance.OnGameReady -= OnGameReady;
                 LobbyManager.Instance.OnGameReady += OnGameReady;
                 await LobbyManager.Instance.CreateLobbyAsHostAsync();
                 string lobbyId = LobbyManager.Instance.GetLobbyId();
@@ -77,6 +78,7 @@ namespace MegaroChebuWarts.Multiplayer
             }
             catch (Exception e)
             {
+                LobbyManager.Instance.OnGameReady -= OnGameReady;
                 Debug.LogError($"[LobbyUI] Failed to create room: {e.Message}");
                 SetStatus("Error: Failed to create room");
                 // TODO: エラー: ルーム作成に失敗しました

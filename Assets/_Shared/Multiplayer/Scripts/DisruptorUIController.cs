@@ -64,23 +64,11 @@ namespace MegaroChebuWarts.Multiplayer
                 (localPoint.x + size.x * 0.5f) / size.x,
                 (localPoint.y + size.y * 0.5f) / size.y
             );
-            normalized = Vector2.ClampMagnitude(normalized, 1f);
             normalized.x = Mathf.Clamp01(normalized.x);
             normalized.y = Mathf.Clamp01(normalized.y);
 
-            // VRプレイヤー位置を基準にワールド座標を算出
-            Vector3 vrPos = VRPlayerTracker.LocalInstance != null
-                ? VRPlayerTracker.LocalInstance.Position.Value
-                : Vector3.zero;
-
-            Vector3 spawnPos = new Vector3(
-                vrPos.x + (normalized.x - 0.5f) * mapRange,
-                0f,
-                vrPos.z + (normalized.y - 0.5f) * mapRange
-            );
-
-            monsterSpawner.RequestSpawnMonsterServerRpc(spawnPos, monsterPrefabIndex);
-            Debug.Log($"[DisruptorUI] スポーンリクエスト送信: {spawnPos}");
+            monsterSpawner.RequestSpawnMonsterServerRpc(normalized.x, normalized.y, mapRange, monsterPrefabIndex);
+            Debug.Log($"[DisruptorUI] スポーンリクエスト送信: normalized={normalized}, mapRange={mapRange}");
 
             StartCoroutine(CooldownCoroutine());
         }

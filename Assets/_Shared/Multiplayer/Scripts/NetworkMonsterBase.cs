@@ -67,13 +67,27 @@ namespace MegaroChebuWarts.Multiplayer
             _monsterBase = GetComponent<NetworkMonsterBase>();
         }
 
+        private const float MaxAllowedDamage = 1000f;
+
         /// <summary>
         /// Client からダメージ情報を Server に転送する ServerRpc
         /// </summary>
         [Rpc(SendTo.Server, InvokePermission = RpcInvokePermission.Everyone)]
-        public void TakeDamageServerRpc(MagicElement element, float damage)
+        public void TakeDamageServerRpc(MagicElement element, float damage, RpcParams rpcParams = default)
         {
-            _monsterBase.TakeDamage(element, damage);
+            // 送信元がNetworkObjectのOwnerであることを確認
+            if (NetworkObject != null && rpcParams.Receive.SenderClientId != NetworkObject.OwnerClientId)
+            {
+                Debug.LogWarning($"[MonsterNetworkRpcHelper] Unauthorized damage RPC from client {rpcParams.Receive.SenderClientId}");
+                return;
+            }
+
+            // ダメージ値のキャップ（異常に大きい値を弾く）
+            float validatedDamage = Mathf.Clamp(damage, 0f, MaxAllowedDamage);
+            if (validatedDamage != damage)
+                Debug.LogWarning($"[MonsterNetworkRpcHelper] Clamped damage from {damage} to {validatedDamage}");
+
+            _monsterBase.TakeDamage(element, validatedDamage);
         }
     }
 }

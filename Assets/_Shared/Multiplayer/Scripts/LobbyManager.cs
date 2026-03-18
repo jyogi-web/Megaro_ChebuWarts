@@ -43,11 +43,18 @@ namespace MegaroChebuWarts.Multiplayer
 
         private async Task InitializeServicesAsync()
         {
-            if (UnityServices.State == ServicesInitializationState.Initialized) return;
+            if (UnityServices.State != ServicesInitializationState.Initialized)
+            {
+                var options = new InitializationOptions();
+                options.SetEnvironmentName("production");
+                await UnityServices.InitializeAsync(options);
+            }
 
-            await UnityServices.InitializeAsync();
-            await AuthenticationService.Instance.SignInAnonymouslyAsync();
-            Debug.Log($"[LobbyManager] Signed in as {AuthenticationService.Instance.PlayerId}");
+            if (!AuthenticationService.Instance.IsAuthorized)
+            {
+                await AuthenticationService.Instance.SignInAnonymouslyAsync();
+                Debug.Log($"[LobbyManager] Signed in as {AuthenticationService.Instance.PlayerId}");
+            }
         }
 
         /// <summary>
@@ -84,7 +91,8 @@ namespace MegaroChebuWarts.Multiplayer
                 allocation.ConnectionData
             );
 
-            NetworkManager.Singleton.StartHost();
+            if (!NetworkManager.Singleton.StartHost())
+                throw new InvalidOperationException("Failed to start host");
 
             _heartbeatCoroutine = StartCoroutine(HeartbeatLobbyCoroutine());
             _pollCoroutine = StartCoroutine(PollForGameStartCoroutine());
@@ -114,7 +122,8 @@ namespace MegaroChebuWarts.Multiplayer
                 joinAllocation.HostConnectionData
             );
 
-            NetworkManager.Singleton.StartClient();
+            if (!NetworkManager.Singleton.StartClient())
+                throw new InvalidOperationException("Failed to start client");
         }
 
         /// <summary>

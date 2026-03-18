@@ -25,6 +25,7 @@ namespace MegaroChebuWarts.Multiplayer
         private NetworkVariable<int> _killCount;
 
         private bool _gameEnded;
+        public bool IsGameEnded => _gameEnded;
 
         private void Awake()
         {
@@ -89,6 +90,7 @@ namespace MegaroChebuWarts.Multiplayer
         [ClientRpc]
         private void ShowResultClientRpc(bool vrWins)
         {
+            _gameEnded = true;
             string result = vrWins
                 ? "VR Side Wins!\nAll enemies defeated!"
                 : "Smartphone Side Wins!\nTime's up!";
