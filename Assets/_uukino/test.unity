@@ -751,11 +751,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SpwanMagic2
   magics:
   - {fileID: 4247436408913820659, guid: 6523a1d1ccbb23344b07bf318ac08fe5, type: 3}
+  - {fileID: 8785567377517904252, guid: 3802b982efb2428479b57b2bc90f4887, type: 3}
   worldControllerPos: {fileID: 590204768}
   circle: {fileID: 192749723}
   gestureTemplates:
-  - {fileID: 4900000, guid: d119cba6442ba48df84c708066ff08a5, type: 3}
-  - {fileID: 4900000, guid: b54ba9dc73783487dabe1c0a9673fee0, type: 3}
   - {fileID: 4900000, guid: 63f1954ad44c4644eb5abc84ecceae3c, type: 3}
   - {fileID: 4900000, guid: 2a4bc41dde896944ab554c1ac750ff46, type: 3}
   minScore: 0.8
