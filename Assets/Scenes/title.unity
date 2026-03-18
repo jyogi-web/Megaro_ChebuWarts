@@ -1053,6 +1053,30 @@ MonoBehaviour:
   grabRadius: 0.15
   leftControllerTransform: {fileID: 1074104385}
   rightControllerTransform: {fileID: 379615908}
+  leftGripAction:
+    m_UseReference: 0
+    m_Action:
+      m_Name: 
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: 611f06ab-f980-4d78-9a64-e0efa7debc69
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: 0}
+  rightGripAction:
+    m_UseReference: 0
+    m_Action:
+      m_Name: 
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: 95417e43-2442-4186-89ff-d526b50975e7
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: 0}
   summonSE: {fileID: 0}
   grabSE: {fileID: 0}
   fumbleSE: {fileID: 0}

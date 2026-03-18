@@ -6,6 +6,7 @@
 
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using System.Collections;
 
 public class MagicCircleController : MonoBehaviour
@@ -22,6 +23,10 @@ public class MagicCircleController : MonoBehaviour
     [Header("OVR Anchors")]
     public Transform leftControllerTransform;
     public Transform rightControllerTransform;
+
+    [Header("Input Actions")]
+    [SerializeField] InputActionProperty leftGripAction;
+    [SerializeField] InputActionProperty rightGripAction;
 
     [Header("SE")]
     public AudioClip summonSE;
@@ -49,6 +54,8 @@ private List<ParticleSystem> trailParticles = new List<ParticleSystem>();
     {
         audioSource = GetComponent<AudioSource>();
         sceneManager = FindObjectOfType<TitleSceneManager>();
+        leftGripAction.action.Enable();
+        rightGripAction.action.Enable();
 
         // ゲーム開始時は非表示
         magicCircleObject.SetActive(false);
@@ -82,16 +89,17 @@ private List<ParticleSystem> trailParticles = new List<ParticleSystem>();
         if (playerTransform == null) return;
 
         int count = trailParticles.Count;
+        Vector3 from = playerTransform.position + Vector3.up;
+        Vector3 to = centerStar.transform.position;
+
+        if (float.IsNaN(from.x) || float.IsNaN(to.x)) return;
+
         for (int i = 0; i < count; i++)
-        {  
+        {
             if (trailParticles[i] == null) continue;
 
-            float t = (float)i / (count - 1);
-            Vector3 target = Vector3.Lerp(
-                playerTransform.position + Vector3.up,
-                centerStar.transform.position,
-                t
-            );
+            float t = count > 1 ? (float)i / (count - 1) : 0f;
+            Vector3 target = Vector3.Lerp(from, to, t);
 
             // なめらかに追従
             trailParticles[i].transform.position = Vector3.Lerp(
@@ -204,11 +212,16 @@ private List<ParticleSystem> trailParticles = new List<ParticleSystem>();
             centerStar.transform.position
         ) < grabRadius;
 
-        // グリップボタンを押した瞬間に判定
-        bool leftGrip = OVRInput.GetDown(OVRInput.Button.PrimaryHandTrigger);
-        bool rightGrip = OVRInput.GetDown(OVRInput.Button.SecondaryHandTrigger);
+        // グリップ値で判定（0〜1のアナログ値）
+        bool leftGrip = leftGripAction.action.ReadValue<float>() > 0.5f;
+        bool rightGrip = rightGripAction.action.ReadValue<float>() > 0.5f;
+#if UNITY_EDITOR
+        if (Keyboard.current != null && Keyboard.current.gKey.isPressed) leftGrip = rightGrip = true;
+#endif
 
-        if ((leftNear) || (rightNear && rightGrip))
+        Debug.Log($"左近い: {leftNear}, 右近い: {rightNear}, 左グリップ: {leftGrip}, 右グリップ: {rightGrip}");
+
+        if ((leftNear && leftGrip) || (rightNear && rightGrip))
         {
             if (grabSE && audioSource)
                 audioSource.PlayOneShot(grabSE);
