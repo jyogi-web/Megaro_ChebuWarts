@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: SpellEffect_Fire
   m_EditorClassIdentifier: Assembly-CSharp::MegaroChebuWarts.Magic.SpellEffectData
   Element: 2
-  EffectPrefab: {fileID: 0}
+  EffectPrefab: {fileID: 1947871717301538, guid: a990e3ac1318b834488c784d851f42a9, type: 3}
   Duration: 2
   InitialPoolSize: 3
+  Damage: 10
   CastSound: {fileID: 0}

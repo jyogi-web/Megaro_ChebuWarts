@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: SpellEffect_Sky
   m_EditorClassIdentifier: Assembly-CSharp::MegaroChebuWarts.Magic.SpellEffectData
   Element: 4
-  EffectPrefab: {fileID: 0}
+  EffectPrefab: {fileID: 7647375919561907788, guid: 035ce8c9cfc34104991ce416daf8aebe, type: 3}
   Duration: 2
   InitialPoolSize: 3
+  Damage: 10
   CastSound: {fileID: 0}
