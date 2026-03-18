@@ -234,13 +234,6 @@
       "dependencies": {},
       "url": "https://packages.unity.com"
     },
-    "com.unity.profiling.core": {
-      "version": "1.0.3",
-      "depth": 1,
-      "source": "registry",
-      "dependencies": {},
-      "url": "https://packages.unity.com"
-    },
     "com.unity.postprocessing": {
       "version": "3.5.4",
       "depth": 0,
@@ -249,6 +242,13 @@
         "com.unity.modules.imgui": "1.0.0",
         "com.unity.modules.physics": "1.0.0"
       },
+      "url": "https://packages.unity.com"
+    },
+    "com.unity.profiling.core": {
+      "version": "1.0.3",
+      "depth": 1,
+      "source": "registry",
+      "dependencies": {},
       "url": "https://packages.unity.com"
     },
     "com.unity.render-pipelines.core": {
