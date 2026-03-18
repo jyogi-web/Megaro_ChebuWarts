@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SpellEffect_Wind
   m_EditorClassIdentifier: Assembly-CSharp::MegaroChebuWarts.Magic.SpellEffectData
   Element: 3
-  EffectPrefab: {fileID: 8785567377517904252, guid: c70a57be9686fff42acef02eb22847cc, type: 3}
+  EffectPrefab: {fileID: 8785567377517904252, guid: 3802b982efb2428479b57b2bc90f4887, type: 3}
   Duration: 2
   InitialPoolSize: 3
   Damage: 10
