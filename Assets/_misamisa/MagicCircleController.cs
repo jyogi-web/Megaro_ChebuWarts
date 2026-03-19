@@ -14,11 +14,11 @@ public class MagicCircleController : MonoBehaviour
     [Header("Magic Circle")]
     public GameObject magicCircleObject;
     public GameObject centerStar;
-    public float expandDuration = 5f;
+    public float expandDuration = 0.5f;
 
     [Header("Controller Settings")]
     public float activationDistance = 1.0f;
-    public float grabRadius = 5f;
+    public float grabRadius = 0.5f;
 
     [Header("OVR Anchors")]
     public Transform leftControllerTransform;
