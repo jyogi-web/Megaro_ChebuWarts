@@ -693,10 +693,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01ae231706d1e3647b44a21f8da1f757, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
-  cullentTime: 0
+  currentTime: 0
   active: 0
   t_text: {fileID: 1869257637}
   e_counter: {fileID: 314994139}
+  countdownText: {fileID: 479755216}
   killText: {fileID: 875931934}
   timeText: {fileID: 1729986040}
   finishScreen: {fileID: 1950615105}
