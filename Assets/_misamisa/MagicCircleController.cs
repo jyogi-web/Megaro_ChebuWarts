@@ -215,11 +215,6 @@ private List<ParticleSystem> trailParticles = new List<ParticleSystem>();
         // グリップ値で判定（0〜1のアナログ値）
         bool leftGrip = leftGripAction.action.ReadValue<float>() > 0.5f;
         bool rightGrip = rightGripAction.action.ReadValue<float>() > 0.5f;
-#if UNITY_EDITOR
-        if (Keyboard.current != null && Keyboard.current.gKey.isPressed) leftGrip = rightGrip = true;
-#endif
-
-        Debug.Log($"左近い: {leftNear}, 右近い: {rightNear}, 左グリップ: {leftGrip}, 右グリップ: {rightGrip}");
 
         if ((leftNear && leftGrip) || (rightNear && rightGrip))
         {

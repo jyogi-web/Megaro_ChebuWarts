@@ -798,6 +798,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: XR Interaction Simulator
       objectReference: {fileID: 0}
+    - target: {fileID: 8135023674665499069, guid: cb026da05fd51714dafb7591b79db990, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8518324294302271954, guid: cb026da05fd51714dafb7591b79db990, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5.09676
@@ -1054,9 +1058,9 @@ MonoBehaviour:
   leftControllerTransform: {fileID: 1074104385}
   rightControllerTransform: {fileID: 379615908}
   leftGripAction:
-    m_UseReference: 0
+    m_UseReference: 1
     m_Action:
-      m_Name: 
+      m_Name: Left Grip
       m_Type: 0
       m_ExpectedControlType: 
       m_Id: 611f06ab-f980-4d78-9a64-e0efa7debc69
@@ -1064,11 +1068,11 @@ MonoBehaviour:
       m_Interactions: 
       m_SingletonActionBindings: []
       m_Flags: 0
-    m_Reference: {fileID: 0}
+    m_Reference: {fileID: -7989615598897241686, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   rightGripAction:
-    m_UseReference: 0
+    m_UseReference: 1
     m_Action:
-      m_Name: 
+      m_Name: Right Grip
       m_Type: 0
       m_ExpectedControlType: 
       m_Id: 95417e43-2442-4186-89ff-d526b50975e7
@@ -1076,7 +1080,7 @@ MonoBehaviour:
       m_Interactions: 
       m_SingletonActionBindings: []
       m_Flags: 0
-    m_Reference: {fileID: 0}
+    m_Reference: {fileID: 2356269739022366052, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   summonSE: {fileID: 0}
   grabSE: {fileID: 0}
   fumbleSE: {fileID: 0}
