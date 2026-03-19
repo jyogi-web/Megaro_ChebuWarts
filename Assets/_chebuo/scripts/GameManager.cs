@@ -65,6 +65,10 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene("title");
     }
+    public void Reload()
+    {
+        SceneManager.LoadScene("GameScene");
+    }
 
     IEnumerator StartCount()
     {

@@ -105,6 +105,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8794572024465283701, guid: 3802b982efb2428479b57b2bc90f4887, type: 3}
+      propertyPath: CollisionModule.radiusScale
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8794572024465283701, guid: 3802b982efb2428479b57b2bc90f4887, type: 3}
       propertyPath: InitialModule.startColor.maxColor.b
       value: 0.5934051
       objectReference: {fileID: 0}
