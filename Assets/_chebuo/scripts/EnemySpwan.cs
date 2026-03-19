@@ -7,6 +7,7 @@ public class EnemySpwan : MonoBehaviour
     GameObject[] allEnemy;
     int enemyNumber;
     int limitEnemy=8;
+    int spawnNumber=0;
     float interval=3;
     
     void Start()
@@ -22,7 +23,7 @@ public class EnemySpwan : MonoBehaviour
     }
     IEnumerator EnemyInstantiater()
     {
-        while (enemyNumber<limitEnemy)
+        while (enemyNumber<limitEnemy&&spawnNumber<limitEnemy+5)
         {
             yield return  new WaitForSeconds(interval);
             float angle=Random.Range(0,360);
@@ -30,6 +31,7 @@ public class EnemySpwan : MonoBehaviour
             float rx=Mathf.Cos(rad);
             float ry=Mathf.Sin(rad);
             GameObject obj=Instantiate(enemy,new Vector3(rx*8,4,ry*8),Quaternion.identity);
+            spawnNumber++;
         }
     }
 }
