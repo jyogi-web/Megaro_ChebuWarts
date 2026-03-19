@@ -19,24 +19,41 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject finishScreen;
     [SerializeField] GameObject gameOverScreen;
     [SerializeField] float fallThreshold = -20f;
+    [SerializeField] float gameOverPanelDistance = 2f; // パネルとカメラの距離(m)
 
     private Transform playerTransform;
+    private Transform cameraTransform;
+    private Canvas gameOverCanvas;
     private bool gameOver = false;
 
     void Start()
     {
         StartCoroutine(StartCount());
         finishScreen.SetActive(false);
-        if (gameOverScreen != null) gameOverScreen.SetActive(false);
+        if (gameOverScreen != null)
+        {
+            gameOverScreen.SetActive(false);
+            // gameOverScreenの親CanvasをWorld Spaceに設定
+            gameOverCanvas = gameOverScreen.GetComponentInParent<Canvas>();
+        }
 
         var xrOrigin = GameObject.Find("XR Origin (XR Rig)");
         if (xrOrigin != null) playerTransform = xrOrigin.transform;
+
+        // VRカメラ（HMD）のTransformを取得
+        var mainCam = Camera.main;
+        if (mainCam != null) cameraTransform = mainCam.transform;
+
         Debug.Log(playerTransform);
     }
 
     void Update()
     {
-        if (gameOver) return;
+        if (gameOver)
+        {
+            UpdateGameOverPanelPosition();
+            return;
+        }
 
         if (countdown == 0)
         {
@@ -85,7 +102,40 @@ public class GameManager : MonoBehaviour
         gameOver = true;
         Debug.Log("Game Over: プレイヤーが落下しました");
         if (gameOverScreen != null)
+        {
+            PlaceGameOverPanelInFrontOfPlayer();
             gameOverScreen.SetActive(true);
+        }
+    }
+
+    private void PlaceGameOverPanelInFrontOfPlayer()
+    {
+        Transform camTransform = cameraTransform != null ? cameraTransform : playerTransform;
+        if (camTransform == null || gameOverCanvas == null) return;
+
+        // CanvasをWorld Spaceに切り替え（初回のみ）
+        if (gameOverCanvas.renderMode != RenderMode.WorldSpace)
+        {
+            gameOverCanvas.renderMode = RenderMode.WorldSpace;
+            gameOverCanvas.worldCamera = Camera.main;
+            gameOverCanvas.transform.localScale = Vector3.one * 0.002f;
+        }
+
+        // パネルをカメラの正面に配置
+        Transform canvasTransform = gameOverCanvas.transform;
+        Vector3 forward = camTransform.forward;
+        forward.y = 0;
+        if (forward == Vector3.zero) forward = Vector3.forward;
+        forward.Normalize();
+
+        canvasTransform.position = camTransform.position + forward * gameOverPanelDistance;
+        canvasTransform.rotation = Quaternion.LookRotation(forward);
+    }
+
+    private void UpdateGameOverPanelPosition()
+    {
+        if (gameOverCanvas == null || !gameOverScreen.activeSelf) return;
+        PlaceGameOverPanelInFrontOfPlayer();
     }
 
     public void SceneMove()
