@@ -30,7 +30,7 @@ public class EnemySpwan : MonoBehaviour
             float rad=angle*Mathf.Deg2Rad;
             float rx=Mathf.Cos(rad);
             float ry=Mathf.Sin(rad);
-            GameObject obj=Instantiate(enemy,new Vector3(rx*8,4,ry*8),Quaternion.identity);
+            GameObject obj=Instantiate(enemy,new Vector3(rx*8,2,ry*8),Quaternion.identity);
             spawnNumber++;
         }
     }

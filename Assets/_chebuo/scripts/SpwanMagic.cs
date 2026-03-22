@@ -66,7 +66,7 @@ public class SpwanMagic : MonoBehaviour
             RecognizeAndSpawnMagic();
 
             hasLastPos = false;
-            Invoke("DeleteMagicCircle", 5f);
+            Invoke("DeleteMagicCircle", 2f);
         }   
     }
 
